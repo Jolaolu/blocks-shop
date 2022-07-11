@@ -1,10 +1,12 @@
-import Vue from "vue";
-import App from "./App.vue";
-import router from "./router";
+import './composition-api'
+import Vue from 'vue'
+import { CreateElement } from 'vue/types'
+import { createApp } from '@vue/composition-api'
+import App from './App.vue'
 
-Vue.config.productionTip = false;
+Vue.config.productionTip = false
 
-new Vue({
-  router,
-  render: (h) => h(App),
-}).$mount("#app");
+const app = createApp({
+  render: (h: CreateElement) => h(App),
+})
+app.mount('#app')
