@@ -16,5 +16,16 @@ module.exports = defineConfig({
       },
     },
   },
+  devServer: {
+    proxy: {
+      '/api': {
+        target: 'https://api.up42.com/',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api': '',
+        },
+      },
+    },
+  },
   transpileDependencies: true,
 })

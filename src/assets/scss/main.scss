@@ -7,6 +7,7 @@
 
 //mixin
 @import 'utils/mixins';
+@import 'utils/_animations';
 
 .container {
   max-width: 1440px;
@@ -16,4 +17,12 @@
 html {
   overflow: hidden;
   height: 100%;
+}
+body {
+  overflow: auto;
+  height: 100%;
+}
+
+button {
+  cursor: pointer;
 }

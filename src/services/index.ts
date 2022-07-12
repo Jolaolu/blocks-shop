@@ -1,6 +1,7 @@
 enum StatusCodes {
   UNAUTHORIZED = 401,
   INTERNAL_SERVER_ERROR = 500,
+  NOT_FOUND = 404,
 }
 
 interface IHttpServiceConfig {
@@ -54,11 +55,15 @@ class HttpService {
     const response = await fetch(`${this.baseUrl}/${url}`, fetchOpts)
 
     if (response.status === StatusCodes.UNAUTHORIZED) {
-      throw new Error('internal server error')
+      throw new Error('unauthorized error')
     }
 
     if (response.status === StatusCodes.INTERNAL_SERVER_ERROR) {
       throw new Error('internal server error')
+    }
+
+    if (response.status === StatusCodes.NOT_FOUND) {
+      throw new Error('requested resource not found')
     }
 
     const data = await response.json()

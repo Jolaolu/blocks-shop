@@ -14,7 +14,7 @@ export default defineComponent({
 </script>
 <style lang="scss">
 #app {
-  height: 100%;
+  min-height: 100vh;
   background: $background-color;
   color: #2c3e50;
   font-family: $font-primary;

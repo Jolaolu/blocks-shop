@@ -1,0 +1,29 @@
+.fade-slide-left-animate- {
+  &enter {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  &enter-active,
+  &leave-active {
+    transition: all 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+
+  &leave-to {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+}
+
+.fade- {
+  &enter {
+    opacity: 0;
+  }
+  &enter-active,
+  &leave-active {
+    transition: all 0.3s ease-out;
+  }
+
+  &leave-to {
+    opacity: 0;
+  }
+}
