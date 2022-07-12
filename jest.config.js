@@ -1,6 +1,5 @@
 module.exports = {
-  testMatch: [ '**/?(*.)+(spec).[jt]s?(x)' ],
-  setupFiles: [ '<rootDir>/tests/jest.init.js' ],
+  testMatch: ['**/?(*.)+(spec).[jt]s?(x)'],
   transform: {
     '^.+\\.vue$': '@vue/vue2-jest',
     '.+\\.(ya?ml|css|styl|less|sass|scss|jpg|jpeg|png|svg|gif|eot|otf|webp|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga|avif)$':
@@ -25,16 +24,11 @@ module.exports = {
     '~(.*)$': '<rootDir>/src/$1',
     '^(\\.{1,2}/.*)\\.js$': '$1',
   },
-  transformIgnorePatterns: [ '<rootDir>/node_modules/' ],
-  testPathIgnorePatterns: [ 'src/tests/' ],
-  coveragePathIgnorePatterns: [ 'src/main.ts', 'tests/compositionApi.ts' ],
+  transformIgnorePatterns: ['<rootDir>/node_modules/'],
+  testPathIgnorePatterns: ['src/tests/'],
+  coveragePathIgnorePatterns: ['src/main.ts'],
   collectCoverage: false,
-  collectCoverageFrom: [ 'src/**/*.{ts,vue}' ],
+  collectCoverageFrom: ['src/**/*.{ts,vue}'],
   testEnvironment: 'jsdom',
-  moduleFileExtensions: [
-    "js",
-    "json",
-    "vue",
-    'ts'
-  ],
+  moduleFileExtensions: ['js', 'json', 'vue', 'ts'],
 }

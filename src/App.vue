@@ -1,9 +1,17 @@
 <template>
   <div id="app">
-    <router-view />
+    <home-view />
   </div>
 </template>
-
+<script>
+import { defineComponent } from 'vue'
+import HomeView from './views/HomeView.vue'
+export default defineComponent({
+  components: {
+    HomeView,
+  },
+})
+</script>
 <style lang="scss">
 #app {
   color: #2c3e50;

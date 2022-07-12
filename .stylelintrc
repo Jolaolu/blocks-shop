@@ -1,0 +1,7 @@
+{
+  "extends": [
+    "stylelint-prettier/recommended",
+    "stylelint-config-idiomatic-order"
+  ],
+  "defaultSeverity": "warning"
+}
