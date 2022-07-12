@@ -1,13 +1,14 @@
 <template>
-  <div class="home">
-    {{ userCredits }}
+  <div class="home container">
+    <nav-bar />
   </div>
 </template>
 <script lang="ts">
 import { ref } from 'vue'
+import NavBar from '~/components/global/NavBar.vue'
 export default {
   name: 'HomeView',
-  components: {},
+  components: { NavBar },
   setup() {
     const userCredits = ref<number>(10000)
     return {
@@ -16,4 +17,8 @@ export default {
   },
 }
 </script>
-<style lang="scss"></style>
+<style lang="scss">
+.home {
+  padding: 2rem 6rem;
+}
+</style>

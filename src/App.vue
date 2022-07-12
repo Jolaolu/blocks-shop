@@ -14,8 +14,10 @@ export default defineComponent({
 </script>
 <style lang="scss">
 #app {
+  height: 100%;
+  background: $background-color;
   color: #2c3e50;
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: $font-primary;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
