@@ -156,7 +156,7 @@ export default defineComponent({
       grid-template-columns: 1fr;
       padding-to: 4rem;
     }
-    @include screen('med') {
+    @include screen('midder') {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
