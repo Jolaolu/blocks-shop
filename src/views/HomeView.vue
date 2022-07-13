@@ -100,7 +100,7 @@ export default defineComponent({
 
     onMounted(async () => {
       await http
-        .get('mmmarketplace/blocks', {})
+        .get('marketplace/blocks', {})
         .then((response): void => {
           isLoading.value = false
           allProducts.value = response?.data.filter(
