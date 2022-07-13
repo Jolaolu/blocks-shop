@@ -143,12 +143,22 @@ export default defineComponent({
 <style lang="scss">
 .home {
   position: relative;
-  padding: 2rem 4rem;
+  padding: 2rem 2rem;
+  @include screen(custom, 'min', 576) {
+    padding: 2rem 4rem;
+  }
   &-content {
     display: grid;
     padding-top: 8rem;
     gap: 3rem 3rem;
     grid-template-columns: repeat(4, minmax(0, 1fr));
+    @include screen(custom, 'max', 576) {
+      grid-template-columns: 1fr;
+      padding-to: 4rem;
+    }
+    @include screen('med') {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
 
     &__cart {
       position: sticky;
@@ -156,7 +166,10 @@ export default defineComponent({
       right: 0;
       bottom: 0;
       display: none;
-      width: 35%;
+      width: 100%;
+      @include screen(custom, 'min', 576) {
+        width: 35%;
+      }
       overflow-y: scroll;
       &.-open {
         position: fixed;
@@ -164,10 +177,6 @@ export default defineComponent({
         display: block;
       }
     }
-
-    /* padding: 2rem;
-        grid-template-columns: 1fr; */
-    /* grid-template-columns: repeat(2, minmax(0, 1fr)); */
   }
 }
 </style>

@@ -43,6 +43,9 @@ export default defineComponent({
   width: 100%;
   justify-content: space-between;
   padding: 0 2rem;
+  @include screen(custom, 'max', 576) {
+    padding: 0;
+  }
   &-logo {
     font-size: 3rem;
     font-weight: 600;

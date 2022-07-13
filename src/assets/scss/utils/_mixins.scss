@@ -48,6 +48,10 @@ $breakpoint-larger: 1440px;
     @media screen and (min-width: $breakpoint-larger) {
       @content;
     }
+  } @else if $size== 'custom' {
+    @media screen and ($type + -width: $pixels + px) {
+      @content;
+    }
   }
 }
 
