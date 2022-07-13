@@ -2,17 +2,6 @@ export interface ApiResponse {
   data: IProduct[]
   error?: any
 }
-interface IBlockPricingStrategy {
-  name: string
-  unit: string
-  direction: string
-  credits: number
-}
-interface IPricingStrategy {
-  type: string
-  credits: number
-}
-
 export interface IProduct {
   id: string
   displayId: string
@@ -39,4 +28,24 @@ export interface IProduct {
   tags: string[]
   isPublicVersion: boolean
   manifestVersion: number
+}
+
+interface IBlockPricingStrategy {
+  name: string
+  unit: string
+  direction: string
+  credits: number
+}
+interface IPricingStrategy {
+  type: string
+  credits: number
+}
+
+export interface ICartItem {
+  product: IProduct
+  quantity: number
+}
+
+export interface ICart {
+  [key: string]: ICartItem
 }
