@@ -81,34 +81,6 @@ class HttpService {
       method: 'GET',
     })
   }
-
-  async post<T = unknown, S = Record<string, any>>(url: string, opts: Omit<IClientOpts<S>, 'method'>): Promise<T> {
-    return this._constructClient<T, S>(url, {
-      ...opts,
-      method: 'POST',
-    })
-  }
-
-  async put<T = unknown, S = Record<string, any>>(url: string, opts: Omit<IClientOpts<S>, 'method'>): Promise<T> {
-    return this._constructClient<T, S>(url, {
-      ...opts,
-      method: 'PUT',
-    })
-  }
-
-  async patch<T = unknown, S = Record<string, any>>(url: string, opts: Omit<IClientOpts<S>, 'method'>): Promise<T> {
-    return this._constructClient<T, S>(url, {
-      ...opts,
-      method: 'PATCH',
-    })
-  }
-
-  async delete<T = unknown, S = Record<string, any>>(url: string, opts: Omit<IClientOpts<S>, 'method'>): Promise<T> {
-    return this._constructClient<T, S>(url, {
-      ...opts,
-      method: 'DELETE',
-    })
-  }
 }
 
 export default HttpService

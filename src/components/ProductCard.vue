@@ -10,7 +10,7 @@
         {{ getNoun(product.metadata.blockPricingStrategy.credits, 'credit') }}
       </p>
       <p class="card-info__description">{{ product.description }}</p>
-      <button class="card-info__btn" type="button" @click="$emit('add-to-cart', product)">Add to cart</button>
+      <base-button class="card-info__btn" @click="$emit('add-to-cart', product)"> Add to cart </base-button>
     </div>
   </article>
 </template>
@@ -18,7 +18,11 @@
 import { PropType, defineComponent } from 'vue'
 import { IProduct } from '~/services/interfaces'
 import { getNoun } from '~/helpers/index'
+import BaseButton from './global/BaseButton.vue'
 export default defineComponent({
+  components: {
+    BaseButton,
+  },
   props: {
     product: {
       type: Object as PropType<IProduct>,
@@ -77,15 +81,9 @@ export default defineComponent({
       text-overflow: ellipsis;
     }
     &__btn {
+      @include button;
       width: 100%;
       padding: 1rem;
-      border: 1px solid $border-color;
-      background: $btn-color;
-      border-radius: 0.8rem;
-      color: $white;
-      &:hover {
-        opacity: 0.8;
-      }
     }
   }
 }

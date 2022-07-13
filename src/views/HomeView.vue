@@ -14,7 +14,6 @@
             @add-to-cart="addToCart"
           />
         </template>
-
         <aside class="home-content__cart" :class="[isCartShown ? '-open' : '']">
           <transition name="fade-slide-left-animate" mode="out-in">
             <cart-manager
@@ -26,6 +25,7 @@
               @decrement-item="decrementCartItem"
               @remove-item="removeFromCart"
               @empty-cart="emptyCart"
+              @purchase-items="purchaseItems"
             />
           </transition>
         </aside>
@@ -47,10 +47,10 @@ export default defineComponent({
   components: { ProductCard, NavBar, CartManager, BaseLoader },
   setup() {
     const userCredits = ref<number>(10000)
-    const isCartShown = ref(false)
-    const isLoading = ref(true)
+    const isCartShown = ref<boolean>(false)
+    const isLoading = ref<boolean>(true)
     const productCart = ref<ICart>({})
-    const allProducts = ref<null | IProduct[]>(null)
+    const allProducts = ref<IProduct[]>([])
     const http = new HttpService({
       baseUrl: 'api',
       baseHeaders: {
@@ -60,6 +60,7 @@ export default defineComponent({
 
     const addToCart = (product: IProduct): void => {
       if (product.id in productCart.value) {
+        Vue.$toast.success('updated item in your cart 🥳')
         productCart.value[product.id].quantity += 1
       } else {
         Vue.$toast.success('Added item to cart 🥳')
@@ -68,10 +69,12 @@ export default defineComponent({
     }
 
     const removeFromCart = (id: string): void => {
+      // using Vue.delete because Vue doesnt expose the `delete` method as module import anatively.
       Vue.delete(productCart.value, id)
     }
 
     const emptyCart = (): void => {
+      // in here, we reset the `productCart` to an empty object
       productCart.value = {}
     }
 
@@ -88,6 +91,13 @@ export default defineComponent({
         return
       }
       productCart.value[id].quantity -= 1
+    }
+
+    const purchaseItems = (totalPurchasePrice: number): void => {
+      userCredits.value = userCredits.value - totalPurchasePrice
+      Vue.$toast.success('Purchase complete!')
+      emptyCart()
+      showCart()
     }
 
     const cartItemsCount = computed<number>(() => {
@@ -122,6 +132,7 @@ export default defineComponent({
       isCartShown,
       isLoading,
       productCart,
+      purchaseItems,
       removeFromCart,
       showCart,
       userCredits,

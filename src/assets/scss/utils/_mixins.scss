@@ -50,3 +50,18 @@ $breakpoint-larger: 1440px;
     }
   }
 }
+
+@mixin button {
+  background-color: $primary-color;
+  border-radius: 0.8rem;
+  color: $white;
+  cursor: pointer;
+  outline: inherit;
+  transition: ease-in-out 0.3s all;
+  will-change: transform, opacity, background-color;
+  &:hover {
+    background-color: #db8c0a;
+    opacity: 0.88;
+    transform: translate(0, -1px);
+  }
+}
