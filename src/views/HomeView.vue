@@ -3,12 +3,18 @@
     <nav-bar @show-cart="showCart" :credit-balance="userCredits" :cart-items-count="cartItemsCount" />
     <transition name="fade">
       <main class="home-content">
-        <product-card
-          v-for="(product, index) in allProducts"
-          :key="index"
-          :product="product"
-          @add-to-cart="addToCart"
-        />
+        <template v-if="isLoading">
+          <base-loader v-for="x in 12" :key="x" />
+        </template>
+        <template v-else>
+          <product-card
+            v-for="(product, index) in allProducts"
+            :key="index"
+            :product="product"
+            @add-to-cart="addToCart"
+          />
+        </template>
+
         <aside class="home-content__cart" :class="[isCartShown ? '-open' : '']">
           <transition name="fade-slide-left-animate" mode="out-in">
             <cart-manager
@@ -34,10 +40,11 @@ import ProductCard from '~/components/ProductCard.vue'
 import HttpService from '~/services/index'
 import CartManager from '~/components/cart/CartManager.vue'
 import { IProduct, ICart } from '~/services/interfaces'
+import BaseLoader from '~/components/global/BaseLoader.vue'
 
 export default defineComponent({
   name: 'HomeView',
-  components: { ProductCard, NavBar, CartManager },
+  components: { ProductCard, NavBar, CartManager, BaseLoader },
   setup() {
     const userCredits = ref<number>(10000)
     const isCartShown = ref(false)
@@ -55,6 +62,7 @@ export default defineComponent({
       if (product.id in productCart.value) {
         productCart.value[product.id].quantity += 1
       } else {
+        Vue.$toast.success('Added item to cart 🥳')
         set(productCart.value, product.id, { product, quantity: 1 })
       }
     }
@@ -92,16 +100,16 @@ export default defineComponent({
 
     onMounted(async () => {
       await http
-        .get('marketplace/blocks', {})
+        .get('mmmarketplace/blocks', {})
         .then((response): void => {
           isLoading.value = false
           allProducts.value = response?.data.filter(
             (product: IProduct) => product.metadata.blockPricingStrategy.name === 'simple'
           )
         })
-        .catch((error: unknown) => {
-          isLoading.value = false
-          console.log(error)
+        .catch((error) => {
+          console.log(error?.message)
+          Vue.$toast.error(error.message as string)
         })
     })
     return {
@@ -112,6 +120,7 @@ export default defineComponent({
       emptyCart,
       incrementCartItem,
       isCartShown,
+      isLoading,
       productCart,
       removeFromCart,
       showCart,

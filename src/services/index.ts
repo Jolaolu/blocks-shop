@@ -55,15 +55,15 @@ class HttpService {
     const response = await fetch(`${this.baseUrl}/${url}`, fetchOpts)
 
     if (response.status === StatusCodes.UNAUTHORIZED) {
-      throw new Error('unauthorized error')
+      throw new Error('Unauthorized error')
     }
 
     if (response.status === StatusCodes.INTERNAL_SERVER_ERROR) {
-      throw new Error('internal server error')
+      throw new Error('Internal server error')
     }
 
     if (response.status === StatusCodes.NOT_FOUND) {
-      throw new Error('requested resource not found')
+      throw new Error('Requested resource not found')
     }
 
     const data = await response.json()

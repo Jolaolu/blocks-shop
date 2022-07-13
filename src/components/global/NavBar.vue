@@ -72,7 +72,7 @@ export default defineComponent({
           padding: 0.3rem 0 0;
           animation-duration: 1.5s;
           animation-iteration-count: 10;
-          animation-name: addProduct;
+          animation-name: add-product;
           background: $green;
           border-radius: 100%;
           color: $white;
@@ -88,7 +88,7 @@ export default defineComponent({
     }
   }
 }
-@keyframes addProduct {
+@keyframes add-product {
   0% {
     margin-top: -5px;
   }

@@ -10,7 +10,8 @@
   },
   "dependencies": {
     "core-js": "^3.8.3",
-    "vue": "^2.7.3"
+    "vue": "^2.7.3",
+    "vue-toastification": "^1.7.14"
   },
   "devDependencies": {
     "@swc/core": "^1.2.212",
