@@ -53,7 +53,6 @@ class HttpService {
     } as RequestInit
 
     const response = await fetch(`${this.baseUrl}/${url}`, fetchOpts)
-    console.log(response, 'response')
     if (response.status === StatusCodes.UNAUTHORIZED) {
       throw new Error('Unauthorized error')
     }
