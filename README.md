@@ -38,4 +38,4 @@ Decision/Thoughts.
 - Since the header isn't sticky and user will not know when cart is updated, I defaulted to having a toast notification with different messages when you add a new item and when you add an already selected item.
 - A possible improvement will be to add client-side pagination.
 - I used the Vue-Webpack proxy workaround to proxy and bypass the CORS errors on dev and netlify redirect to bypass it on the live version.
-- I defaulted to having the loader show up when there is an error as opposed to showing a blank screen or just  text.
+- I defaulted to having the loader show up when there is an error as opposed to showing a blank screen or just text.
