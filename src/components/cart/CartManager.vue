@@ -30,7 +30,7 @@
             <span>
               {{ cartItem.quantity }}
             </span>
-            <increment-button v-on="$listeners" v-bind="$attrs" @click="$emit('increment-item', cartItem.product.id)" />
+            <increment-button @click="$emit('increment-item', cartItem.product.id)" />
             <button type="button" class="item-remove" @click="$emit('remove-item', cartItem.product.id)">
               <svg viewBox="0 0 477.9 477.9" xmlns="http://www.w3.org/2000/svg">
                 <path

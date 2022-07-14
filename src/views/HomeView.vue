@@ -60,7 +60,7 @@ export default defineComponent({
 
     const addToCart = (product: IProduct): void => {
       if (product.id in productCart.value) {
-        Vue.$toast.success('updated item in your cart 🥳')
+        Vue.$toast.success('Updated item in your cart 🥳')
         productCart.value[product.id].quantity += 1
       } else {
         Vue.$toast.success('Added item to cart 🥳')
