@@ -30,5 +30,13 @@ module.exports = {
   collectCoverage: false,
   collectCoverageFrom: ['src/**/*.{ts,vue}'],
   testEnvironment: 'jsdom',
+  testEnvironmentOptions: {
+    url: 'http://localhost/',
+    browsers: [
+      "chrome",
+      "firefox",
+      "safari"
+    ]
+  },
   moduleFileExtensions: ['js', 'json', 'vue', 'ts'],
 }
